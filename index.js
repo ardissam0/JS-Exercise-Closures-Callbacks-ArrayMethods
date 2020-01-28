@@ -184,8 +184,17 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
 function getFullNames(runners) {
-  
+  const nameListing = [];
+
+  runners.forEach(function(item) {
+
+    return nameListing.push(`${item.last_name}, ${item.first_name}`);
+});
+
+return runners;
+
 }
+
 /**
  * ### Challenge `firstNamesAllCaps`
  * 
@@ -198,9 +207,14 @@ function getFullNames(runners) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(/* CODE HERE */) {
-  /* CODE HERE */
-}
+function firstNamesAllCaps(runners) {
+  const capitalNames = [];
+
+  runners.map(function(item) {
+    return item.first_name.toUpperCase();
+  });
+
+  console.log(capitalNames);
 
 /**
  * ### Challenge `getRunnersByTShirtSize`
@@ -215,8 +229,14 @@ function firstNamesAllCaps(/* CODE HERE */) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
-  /* CODE HERE */
+function getRunnersByTShirtSize(runners, tShirtSize) {
+  const shirtSizes = [];
+
+  runners.filter(function(item) {
+    return runners.shirt_size === tShirtSize;
+});
+
+return shirtSizes;
 }
 
 /**
@@ -229,7 +249,7 @@ function getRunnersByTShirtSize(/* CODE HERE */) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
+function tallyUpDonations(runners) {
   /* CODE HERE */
 }
 
