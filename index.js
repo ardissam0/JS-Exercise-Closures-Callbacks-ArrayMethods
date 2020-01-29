@@ -184,6 +184,7 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
 function getFullNames(runners) {
+
   const nameListing = [];
 
   runners.forEach(function(item) {
@@ -191,7 +192,7 @@ function getFullNames(runners) {
     return nameListing.push(`${item.last_name}, ${item.first_name}`);
 });
 
-return runners;
+return nameListing;
 
 }
 
@@ -208,13 +209,14 @@ return runners;
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
 function firstNamesAllCaps(runners) {
-  const capitalNames = [];
 
-  runners.map(function(item) {
+  const capitalNames = runners.map(function(item) {
     return item.first_name.toUpperCase();
   });
+ 
+  return capitalNames;
+}
 
-  console.log(capitalNames);
 
 /**
  * ### Challenge `getRunnersByTShirtSize`
@@ -230,12 +232,11 @@ function firstNamesAllCaps(runners) {
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
 function getRunnersByTShirtSize(runners, tShirtSize) {
-  const shirtSizes = [];
 
-  runners.filter(function(item) {
-    return runners.shirt_size === tShirtSize;
+   const shirtSizes = runners.filter(function(item) {
+    return item.shirt_size === tShirtSize;
 });
-
+ 
 return shirtSizes;
 }
 
@@ -250,8 +251,16 @@ return shirtSizes;
  * @returns a number which is the sum of the donations by all runners.
 */
 function tallyUpDonations(runners) {
-  /* CODE HERE */
-}
+
+  const donate = runners.reduce ((accumulator, currentValue) => {
+    
+    return accumulator + currentValue.donation
+
+}, 0);
+  
+  return donate;
+
+};
 
 /////////////// CLOSURES ///////////////
 /////////////// CLOSURES ///////////////
@@ -270,13 +279,12 @@ function tallyUpDonations(runners) {
  * etc
 */
 function counterMaker() {
-  // BROKEN CODE STARTS
-  const count = 0;
-  function counter() {
-    ++count
-  }
+  let count = 0;
+  return () => {
+    return count++;
+  };
+};
   // BROKEN CODE ENDS
-}
 
 /**
  * ### Challenge `counterMakerWithLimit`
@@ -298,9 +306,21 @@ function counterMaker() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
-  /* CODE HERE */
+function counterMakerWithLimit() {
+  let count = -1;
+  let max = 3;
+  return function counter() {
+    if (count === max) {
+      count = 0;}
+      
+    else {
+      count++
+
+    };
+    return count;
+  };
 }
+
 
 /////////////// END OF CHALLENGE ///////////////
 /////////////// END OF CHALLENGE ///////////////
